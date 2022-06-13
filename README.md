@@ -6,6 +6,24 @@ This branch is intended to be step 1 with just the structure in place.
 Incremental branches will be added as I add more features.
 I want to start with just the options and mappings, then add in plugins one by one so I understand them more (what, why how).
 
+Here's what the tree looks like now:
+
+├── README.md
+├── init.lua
+├── lua
+│             ├── mappings.lua
+│             ├── options.lua
+│             ├── plugins.lua
+│             ├── reference
+│             │             ├── mappings-ref.md
+│             │             ├── options-ref.md
+│             │             └── plugins-ref.md
+│             └── setup
+├── minimal_init.lua
+├── plugin
+├── temp
+└── undo
+
 Here's what the tree looked like when I started:
 
 ===============================================================================
