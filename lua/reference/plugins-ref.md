@@ -1,150 +1,166 @@
 -- ===============================================================================
 -- Plugins Reference
 -- ===============================================================================
+local function map(mode, lhs, rhs, opts)
+  local options = { noremap = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
 
--- local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
--- vim.api.nvim_create_autocmd(
---   "BufWritePost",
---   { command = "source <afile> | PackerCompile", group = packer_group, pattern = "plugins.lua" }
--- )
+-- Map leader to space
+vim.g.mapleader = ","
 
--- local fn = vim.fn
--- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
--- if fn.empty(fn.glob(install_path)) > 0 then
---   packer_bootstrap = fn.system({
---     "git",
---     "clone",
---     "--depth",
---     "1",
---     "https://github.com/wbthomason/packer.nvim",
---     install_path,
---   })
--- end
--- vim.api.nvim_command("packadd packer.nvim")
--- -- returns the require for use in `config` parameter of packer's use
--- -- expects the name of the config file
--- function get_setup(name)
---   return string.format('require("setup/%s")', name)
--- end
+-- Nvim Tree
+map("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
+map("n", "<leader>u", ":NvimTreeFindFile<CR>", { silent = true })
 
--- return require("packer").startup({
---   function(use)
---     -- Packer can manage itself
---     use("wbthomason/packer.nvim")
---     use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
---     -- use({ "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim", config = get_setup("zenbones") })
---     use({ "kyazdani42/nvim-web-devicons" })
---     use({
---       "nvim-lualine/lualine.nvim",
---       config = get_setup("lualine"),
---       event = "VimEnter",
---       requires = { "kyazdani42/nvim-web-devicons", opt = true },
---     })
---     use({
---       "folke/zen-mode.nvim",
---       config = get_setup("zen-mode"),
---     })
---     use({
---       "norcalli/nvim-colorizer.lua",
---       event = "BufReadPre",
---       config = get_setup("colorizer"),
---     })
---     -- Post-install/update hook with neovim command
---     use({
---       "nvim-treesitter/nvim-treesitter",
---       config = get_setup("treesitter"),
---       run = ":TSUpdate",
---     })
---     use("nvim-treesitter/nvim-treesitter-textobjects")
---     use({
---       "windwp/nvim-autopairs",
---       after = "nvim-cmp",
---       config = get_setup("autopairs"),
---     })
---     use({
---       "hrsh7th/nvim-cmp",
---       requires = {
---         { "hrsh7th/cmp-nvim-lsp" },
---         { "hrsh7th/cmp-nvim-lua" },
---         { "hrsh7th/cmp-buffer" },
---         { "hrsh7th/cmp-path" },
---         { "hrsh7th/cmp-cmdline" },
---         { "hrsh7th/vim-vsnip" },
---         { "hrsh7th/cmp-vsnip" },
---         { "hrsh7th/vim-vsnip-integ" },
---         { "f3fora/cmp-spell", { "hrsh7th/cmp-calc" }, { "hrsh7th/cmp-emoji" } },
---         { "rafamadriz/friendly-snippets" },
---       },
---       config = get_setup("cmp"),
---     })
---     -- use({
---     --   "rlane/pounce.nvim",
---     --   config = get_setup("pounce"),
---     -- })
---     use({
---       "lewis6991/gitsigns.nvim",
---       requires = { "nvim-lua/plenary.nvim" },
---       event = "BufReadPre",
---       config = get_setup("gitsigns"),
---     })
+-- Switch Session
+-- map("n", "<Leader>1", ":Telescope sessions [save_current=true]<CR>")
+map("n", "<Leader>1", ":SearchSession<CR>")
 
---     use("p00f/nvim-ts-rainbow")
+-- Update Plugins
+map("n", "<Leader>u", ":PackerSync<CR>")
 
---     use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
---     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
---     use({
---       "numToStr/Comment.nvim",
---       config = get_setup("comment"),
---     })
---     use({
---       "nvim-telescope/telescope.nvim",
---       module = "telescope",
---       cmd = "Telescope",
---       requires = {
---         { "nvim-lua/popup.nvim" },
---         { "nvim-lua/plenary.nvim" },
---         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
---       },
---       config = get_setup("telescope"),
---     })
---     use({ "nvim-telescope/telescope-file-browser.nvim" })
---     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
---     use({ "tpope/vim-repeat" })
---     use({ "tpope/vim-surround" })
---     use({ "wellle/targets.vim" })
---     -- use({ "Shatur/neovim-session-manager", config = get_setup("session") })
---     -- use({
---     --  "rmagatti/session-lens",
---     --  requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
---     --  config = get_setup("session"),
---     -- })
---     use({ "windwp/nvim-ts-autotag" })
+-- Open nvimrc file
+map("n", "<Leader>v", "<cmd>e $MYVIMRC<CR>")
 
---     use({
---       "winston0410/range-highlight.nvim",
---       requires = { { "winston0410/cmd-parser.nvim" } },
---       config = get_setup("range-highlight"),
---     })
---     use({ "stevearc/dressing.nvim" })
---     use({ "goolord/alpha-nvim", config = get_setup("alpha") })
+-- Source nvimrc file
+map("n", "<Leader>sv", ":luafile %<CR>")
 
---     use({ "luukvbaal/stabilize.nvim", config = get_setup("stabilize") })
---     use({
---       "simrat39/symbols-outline.nvim",
---       cmd = { "SymbolsOutline" },
---       setup = get_setup("outline"),
---     })
---     if packer_bootstrap then
---       require("packer").sync()
---     end
---   end,
---   config = {
---     display = {
---       open_fn = require("packer.util").float,
---     },
---     profile = {
---       enable = true,
---       threshold = 1, -- the amount in ms that a plugins load time must be over for it to be included in the profile
---     },
---   },
--- })
+-- Quick new file
+map("n", "<Leader>n", "<cmd>enew<CR>")
+
+-- Easy select all of file
+map("n", "<Leader>sa", "ggVG<c-$>")
+
+-- Make visual yanks place the cursor back where started
+map("v", "y", "ygv<Esc>")
+
+-- Easier file save
+map("n", "<Leader>w", "<cmd>:w<CR>")
+map("n", "<Delete>", "<cmd>:w<CR>")
+
+-- Tab to switch buffers in Normal mode
+map("n", "<Tab>", ":bnext<CR>")
+map("n", "<S-Tab>", ":bprevious<CR>")
+
+-- More molecular undo of text
+-- map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", "!", "!<c-g>u")
+map("i", "?", "?<c-g>u")
+map("i", ";", ";<c-g>u")
+map("i", ":", ":<c-g>u")
+
+-- Keep search results centred
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+map("n", "J", "mzJ`z")
+
+-- Make Y yank to end of the line
+map("n", "Y", "y$")
+
+-- Line bubbling
+map("n", "<c-j>", "<cmd>m .+1<CR>==", { silent = true })
+map("n", "<c-k>", "<cmd>m .-2<CR>==", { silent = true })
+map("v", "<c-j>", ":m '>+1<CR>==gv=gv", { silent = true })
+map("v", "<c-k>", ":m '<-2<CR>==gv=gv", { silent = true })
+
+--After searching, pressing escape stops the highlight
+map("n", "<esc>", ":noh<cr><esc>", { silent = true })
+
+-- Easy add date/time
+map("n", "<Leader>t", "\"=strftime('%c')<CR>Pa", { silent = true })
+
+-- Telescope
+
+local km = vim.keymap
+-- Add moves of more than 5 to the jump list
+km.set("n", "j", [[(v:count > 5 ? "m'" . v:count : "") . 'j']], { expr = true, desc = "if j > 5 then add to jumplist" })
+km.set("n", "<leader>p", function()
+  require("telescope.builtin").find_files()
+end)
+km.set("n", "<leader>r", function()
+  require("telescope.builtin").registers()
+end)
+km.set("n", "<leader>g", function()
+  require("telescope.builtin").live_grep()
+end)
+km.set("n", "<leader>b", function()
+  require("telescope.builtin").buffers()
+end)
+km.set("n", "<leader>j", function()
+  require("telescope.builtin").help_tags()
+end)
+km.set("n", "<leader>h", function()
+  require("telescope.builtin").git_bcommits()
+end)
+km.set("n", "<leader>f", function()
+  require("telescope").extensions.file_browser.file_browser()
+end)
+km.set("n", "<leader>s", function()
+  require("telescope.builtin").spell_suggest(require("telescope.themes").get_cursor({}))
+end)
+km.set("n", "<leader>i", function()
+  require("telescope.builtin").git_status()
+end)
+km.set("n", "<leader>ca", function()
+  vim.lsp.buf.code_action()
+end)
+km.set("n", "<leader>cs", function()
+  require("telescope.builtin").lsp_document_symbols()
+end)
+km.set("n", "<leader>cd", function()
+  require("telescope.builtin").diagnostics()
+end)
+km.set("n", "<leader>cr", function()
+  require("telescope.builtin").lsp_references()
+end)
+km.set({ "v", "n" }, "<leader>cn", function()
+  vim.lsp.buf.rename()
+end, { noremap = true, silent = true })
+km.set("n", "<leader>ci", function()
+  vim.diagnostic.open_float()
+end)
+
+-- Easier split mappings
+map("n", "<Leader><Down>", "<C-W><C-J>", { silent = true })
+map("n", "<Leader><Up>", "<C-W><C-K>", { silent = true })
+map("n", "<Leader><Right>", "<C-W><C-L>", { silent = true })
+map("n", "<Leader><Left>", "<C-W><C-H>", { silent = true })
+map("n", "<Leader>;", "<C-W>R", { silent = true })
+map("n", "<Leader>[", "<C-W>_", { silent = true })
+map("n", "<Leader>]", "<C-W>|", { silent = true })
+map("n", "<Leader>=", "<C-W>=", { silent = true })
+
+-- Pounce
+-- km.set({ "n", "v" }, "h", ":Pounce<CR>", { silent = true })
+-- km.set("n", "H", ":PounceRepeat<CR>", { silent = true })
+
+-- Symbols outline
+map("n", "<leader>o", ":SymbolsOutline<cr>")
+
+-- ZenMode toggle
+map("n", "<leader>z", ":ZenMode<cr>")
+
+-- Make Option and backspace delete whole words in OSX/Kitty. Requires `macos_option_as_alt yes` to be set in Kitty config
+map("i", "<A-BS>", "<C-W>")
+
+
+-- Insert mode mappings to mimic some the emacs keybindings ctrl-n and ctrl-p are obviously a bad idea:
+-- inoremap <C-e> <C-o>$
+map("i", "<C-e>", "<C-o>$")
+-- inoremap <C-a> <C-o>0
+map("i", "<C-a>", "<C-o>0")
+-- inoremap <C-b>  <Left>
+map("i", "<C-b>", "<Left>")
+-- inoremap <C-f>  <Right>
+map("i", "<C-f>", "<Right>")
+-- inoremap <C-d>  <Delete>
+map("i", "<C-d>", "<Delete>")
+-- inoremap <C-k>   <C-o>D
+map("i", "<C-k>", "<C-o>D")
+-- inoremap ;; <Esc>
+map("i", ";;", "<Esc>")
