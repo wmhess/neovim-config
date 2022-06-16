@@ -10,13 +10,13 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 -- Different machine VAR for office
-local envMachine = os.getenv("MACHINE")
-if envMachine == "work" then
-  machineCmd =
-    "/System/Volumes/Data/usr/local/lib/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server"
-else
-  machineCmd = "vscode-css-language-server"
-end
+-- local envMachine = os.getenv("MACHINE")
+-- if envMachine == "work" then
+--   machineCmd =
+--     "/System/Volumes/Data/usr/local/lib/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server"
+-- else
+--   machineCmd = "vscode-css-language-server"
+-- end
 
 -- LSP Server config
 require("lspconfig").cssls.setup({
