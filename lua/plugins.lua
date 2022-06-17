@@ -25,13 +25,19 @@ function get_setup(name)
   return string.format('require("setup/%s")', name)
 end
 
-return require('packer').startup(function()
+return require('packer').startup({
+  function(use)
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  use {
+  use('wbthomason/packer.nvim')
+  use({
     'nvim-lualine/lualine.nvim',
      config = get_setup("lualine"), -- will this blow up?
      event = "VimEnter",
      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-end)
+  })
+  use({
+  'nvim-telescope/telescope.nvim',
+  requires = { {'nvim-lua/plenary.nvim'} },
+  config = get_setup("telescope"),
+  })
+end})
