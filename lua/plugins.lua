@@ -29,6 +29,7 @@ return require('packer').startup({
   function(use)
   -- Packer can manage itself
   use('wbthomason/packer.nvim')
+  use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
   use({
     'nvim-lualine/lualine.nvim',
      config = get_setup("lualine"), -- will this blow up?
