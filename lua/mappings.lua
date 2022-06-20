@@ -6,7 +6,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Map leader to comma
+-- Map leader to comma | The default is "\". Give that a go for a while before remapping.
 -- vim.g.mapleader = ","
 
 -- Update Plugins

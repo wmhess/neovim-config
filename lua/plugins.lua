@@ -37,6 +37,11 @@ return require('packer').startup({
      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   })
   use({
+    'nvim-treesitter/nvim-treesitter',
+    config = get_setup("nvim-treesitter"), -- will this blow up?
+    run = ':TSUpdate'
+  })
+  use({
   'nvim-telescope/telescope.nvim',
   requires = { {'nvim-lua/plenary.nvim'} },
   config = get_setup("telescope"),
