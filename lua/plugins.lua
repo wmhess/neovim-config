@@ -30,6 +30,7 @@ return require('packer').startup({
   -- Packer can manage itself
   use('wbthomason/packer.nvim')
   use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
+  use('neovim/nvim-lspconfig') -- Configurations for Nvim LSP
   use({
     'nvim-lualine/lualine.nvim',
      config = get_setup("lualine"), -- will this blow up?
@@ -46,4 +47,14 @@ return require('packer').startup({
   requires = { {'nvim-lua/plenary.nvim'} },
   config = get_setup("telescope"),
   })
+  -- Not sure why this is in here twice?
+  -- use({
+  --  "iamcco/markdown-preview.nvim",
+  --  run = function() vim.fn["mkdp#util#install"]() end,
+  -- })
+
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", 
+  setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, 
+  })
+
 end})

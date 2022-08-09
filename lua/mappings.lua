@@ -89,3 +89,35 @@ map("i", "<C-d>", "<Delete>")
 map("i", "<C-k>", "<C-o>D")
 -- inoremap ;; <Esc>
 map("i", ";;", "<Esc>")
+-- this might cause some problems?
+map("i", "<C-j>", "<C-o>j")
+
+
+-- Find files using Telescope command-line sugar.
+
+-- map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+
+-- map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
+
+-- map("n", "<leader>fb",  "<cmd>Telescope buffers<cr>")
+
+-- map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")j
+
+-- Tab to switch buffers in Normal mode
+map("n", "<Tab>", ":bnext<CR>")
+map("n", "<S-Tab>", ":bprevious<CR>")
+
+-- Easier file save
+map("n", "<Leader>w", "<cmd>:w<CR>")
+map("n", "<Delete>", "<cmd>:w<CR>")
+
+-- Easier split mappings (these don't seem to be working for me)
+map("n", "<Leader><Down>", "<C-W><C-J>", { silent = true })
+map("n", "<Leader><Up>", "<C-W><C-K>", { silent = true })
+map("n", "<Leader><Right>", "<C-W><C-L>", { silent = true })
+map("n", "<Leader><Left>", "<C-W><C-H>", { silent = true })
+map("n", "<Leader>;", "<C-W>R", { silent = true })
+map("n", "<Leader>[", "<C-W>_", { silent = true })
+map("n", "<Leader>]", "<C-W>|", { silent = true })
+map("n", "<Leader>=", "<C-W>=", { silent = true })
+
