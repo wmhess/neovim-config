@@ -18,15 +18,19 @@ Here's what the tree looks like at the start of "lua-slim":
 ├── temp
 └── undo
 
+===============================
+
 I want it to look like this:
 
 ├── README.md
 ├── init.lua
 ├── lua
-│             ├── mappings.lua
-│             ├── options.lua
-│             ├── reference
-│             │             ├── mappings-ref.md
-│             │             ├── options-ref.md
-│             └── setup
+             ├── mappings.lua
+             ├── options.lua
+             ├── reference
+                          ├── mappings-ref.md
+                          ├── options-ref.md
 
+===============================
+
+To start off, I'm going to test by adding a few simple options and mappings.
