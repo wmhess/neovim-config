@@ -1,9 +1,15 @@
-# neovim-config
+# neovim-config (lua-starter)
 
-Rolling everything back to a basic lua starting point.
+Rolling everything back to a basic lua starting point "lua-starter".
+
 I'm going to keep the initial folder structure, but remove all the details and start over.
-This branch is intended to be step 1 with just the structure in place.
-Incremental branches will be added as I add more features.
+This branch is intended to be step 1 with just the structure in place. 
+
+That means only make basic structural changes in this branch. Make a new branch to try things out.
+
+Incremental branches can be whatever the heck you want, just keep this on tidy.
+
+
 I want to start with just the options and mappings, then add in plugins one by one so I understand them more (what, why how).
 
 Here's what the tree looks like now:
