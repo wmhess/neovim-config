@@ -1,5 +1,7 @@
 # neovim-config (lua-slim)
 
+## Interesting side-note: If you are on this basic branch and try to use Lunar Vim elsewhere it will complain.
+
 Here's what the tree looks like at the start of "lua-slim":
 
 ├── README.md
