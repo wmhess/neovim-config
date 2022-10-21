@@ -7,7 +7,8 @@ local cmd = vim.api.nvim_command
 opt.number = true                -- bool: Show line numbers
 opt.relativenumber = true        -- bool: Show relative line numbers
 opt.scrolloff = 4                -- int:  Min num lines of context
-opt.signcolumn = "yes"           -- str:  Show the sign column
+opt.signcolumn = 'yes'           -- str:  Show the sign column
+opt.clipboard = 'unnamed'        -- str:  Makes copy to system clipboard not need "*y
 
 -- [[ Filetypes ]]
 opt.encoding = 'utf8'            -- str:  String encoding to use
@@ -16,7 +17,7 @@ opt.fileencoding = 'utf8'        -- str:  File encoding to use
 -- [[ Theme ]]
 opt.syntax = "ON"                -- str:  Allow syntax highlighting
 opt.termguicolors = true         -- bool: If term supports ui color then enable
-cmd('colorscheme dracula')       -- cmd:  Set the colorscheme
+cmd('colorscheme nordfox')       -- cmd:  Set the colorscheme
 
 -- [[ Search ]]
 opt.ignorecase = true            -- bool: Ignore case in search patterns
@@ -34,3 +35,12 @@ opt.tabstop = 4                  -- num:  Number of spaces tabs count for
 opt.splitright = true            -- bool: Place new window to right of current one
 opt.splitbelow = true            -- bool: Place new window below the current one
 
+
+-- Change the relative line number display to off when in insert mode
+vim.cmd ([[
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+]])

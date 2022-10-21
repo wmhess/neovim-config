@@ -29,6 +29,6 @@ require('plug')      -- Plugins
 -- PLUGINS:
 require('lualine').setup {
   options = {
-    theme = 'dracula-nvim'
+    theme = 'nightfox'
   }
 }
