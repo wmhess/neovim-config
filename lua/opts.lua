@@ -8,7 +8,8 @@ opt.number = true                -- bool: Show line numbers
 opt.relativenumber = true        -- bool: Show relative line numbers
 opt.scrolloff = 4                -- int:  Min num lines of context
 opt.signcolumn = 'yes'           -- str:  Show the sign column
-opt.clipboard = 'unnamed'        -- str:  Makes copy to system clipboard not need "*y
+opt.clipboard = 'unnamedplus'    -- str:  Makes copy to system clipboard not need "*y
+opt.linebreak = true             -- Stop words being broken on wrap
 
 -- [[ Filetypes ]]
 opt.encoding = 'utf8'            -- str:  String encoding to use
@@ -17,13 +18,14 @@ opt.fileencoding = 'utf8'        -- str:  File encoding to use
 -- [[ Theme ]]
 opt.syntax = "ON"                -- str:  Allow syntax highlighting
 opt.termguicolors = true         -- bool: If term supports ui color then enable
+opt.showmode = false             -- turns off the mode display on the command line (lualine will show the mode)
 cmd('colorscheme nordfox')       -- cmd:  Set the colorscheme
 
 -- [[ Search ]]
 opt.ignorecase = true            -- bool: Ignore case in search patterns
 opt.smartcase = true             -- bool: Override ignorecase if search contains capitals
 opt.incsearch = true             -- bool: Use incremental search
-opt.hlsearch = false             -- bool: Highlight search matches
+opt.hlsearch = true              -- bool: Highlight search matches
 
 -- [[ Whitespace ]]
 opt.expandtab = true             -- bool: Use spaces instead of tabs
@@ -34,6 +36,9 @@ opt.tabstop = 4                  -- num:  Number of spaces tabs count for
 -- [[ Splits ]]
 opt.splitright = true            -- bool: Place new window to right of current one
 opt.splitbelow = true            -- bool: Place new window below the current one
+
+-- [[ Cursor Shenanigans ]]
+opt.guicursor = "n-v-c-sm:block-blinkwait50-blinkon50-blinkoff50,i-ci-ve:ver25-Cursor-blinkon100-blinkoff100,r-cr-o:hor20"
 
 
 -- Change the relative line number display to off when in insert mode
