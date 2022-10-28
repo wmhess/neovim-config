@@ -13,6 +13,9 @@
 -- vim.bo; maps to vim.api.nvim_buf_set_option; equivalent to :setlocal for buffer options.
 -- vim.wo: maps to vim.api.nvim_win_set_option; equivalent to :setlocal for window options.
 
+-- (NvimTree) disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- LEADER
 -- These keybindings need to be defined before the first /
@@ -27,8 +30,32 @@ require('keys')      -- Keymaps
 require('plug')      -- Plugins
 
 -- PLUGINS:
+
+-- LuaLine
 require('lualine').setup {
   options = {
     theme = 'nightfox'
   }
 }
+
+-- NvimTree empty setup using defaults
+require("nvim-tree").setup()
+
+---- NvimTree with some options
+--require("nvim-tree").setup({
+--  sort_by = "case_sensitive",
+--  view = {
+--    adaptive_size = true,
+--    mappings = {
+--      list = {
+--        { key = "u", action = "dir_up" },
+--      },
+--    },
+--  },
+--  renderer = {
+--    group_empty = true,
+--  },
+--  filters = {
+--    dotfiles = true,
+--  },
+--})
