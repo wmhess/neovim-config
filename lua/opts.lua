@@ -10,6 +10,9 @@ opt.scrolloff = 4                -- int:  Min num lines of context
 opt.signcolumn = 'yes'           -- str:  Show the sign column
 opt.clipboard = 'unnamedplus'    -- str:  Makes copy to system clipboard not need "*y
 opt.linebreak = true             -- Stop words being broken on wrap
+opt.ruler = true
+opt.matchpairs = '<:>'           -- Use % to jump between pairs
+opt.textwidth = 79
 
 -- [[ Filetypes ]]
 opt.encoding = 'utf8'            -- str:  String encoding to use
@@ -26,12 +29,13 @@ opt.ignorecase = true            -- bool: Ignore case in search patterns
 opt.smartcase = true             -- bool: Override ignorecase if search contains capitals
 opt.incsearch = true             -- bool: Use incremental search
 opt.hlsearch = true              -- bool: Highlight search matches
+opt.showmatch = true
 
 -- [[ Whitespace ]]
 opt.expandtab = true             -- bool: Use spaces instead of tabs
-opt.shiftwidth = 4               -- num:  Size of an indent
-opt.softtabstop = 4              -- num:  Number of spaces tabs count for in insert mode
-opt.tabstop = 4                  -- num:  Number of spaces tabs count for
+opt.shiftwidth = 2               -- num:  Size of an indent
+opt.softtabstop = 2              -- num:  Number of spaces tabs count for in insert mode
+opt.tabstop = 2                  -- num:  Number of spaces tabs count for
 
 -- [[ Splits ]]
 opt.splitright = true            -- bool: Place new window to right of current one

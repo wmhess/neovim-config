@@ -32,3 +32,5 @@ require('lualine').setup {
     theme = 'nightfox'
   }
 }
+
+require('telescope').load_extension('fzf')
