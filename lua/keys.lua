@@ -32,6 +32,10 @@ map("n", "<Leader>w", "<cmd>w <CR>")
 -- Try this for delete without copy, so type 'dd or 'dw
 map("n", "'", "\"_")
 
+map("n", "<leader>y", [["+y]])
+
+map("n", "<leader>Y", [["+Y]])
+
 -- Insert mode mappings to mimic some the emacs keybindings ctrl-n and ctrl-p are obviously a bad idea:
 -- inoremap <C-e> <C-o>$
 map("i", "<C-e>", "<C-o>$")
@@ -65,7 +69,7 @@ map("n", "<Leader>f",  ":lua require'telescope.builtin'.find_files(require('tele
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
--- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- Move around splits using Ctrl + {h,j,k,l}
